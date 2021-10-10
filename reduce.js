@@ -1,4 +1,4 @@
-let arr = [1,2,3,4,5,6]
+let arr = [1,2,32,4,5,6]
 
 
 function reverseArr(arr =[]){
@@ -21,5 +21,23 @@ function map_filter(arr=[]){
     return arr.reduce((t, v) => (v = v * 2, v >= 10 ? [...t, v] : t), [])
 }
 
+function some(arr=[]){
+    //better
+    // return arr.reduce((t, v) =>  t || v >= 5, false) 
+    return arr.reduce((t, v) => t || (t = v >= 5, t), false)
+}
 
-console.log(map_filter(arr));
+function any(arr=[]){
+    return arr.reduce((t, v) => t && v < 3, true)
+}
+
+function chunk(arr=[], size=1){
+    //overthinking at t[?]
+    // return arr.reduce((t, v, index) => ((t[Math.floor(index/size)] && t[Math.floor(index/size)].length < size) 
+    // ? t[Math.floor(index/size)].push(v) 
+    // : t.push([v]), t), [[]])
+
+    return arr.length ? arr.reduce((t, v) => (t[t.length-1].length === size ? t.push([v]) : t[t.length-1].push(v), t), [[]]) :[]
+}
+
+console.log(chunk(arr,3));
