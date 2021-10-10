@@ -16,4 +16,10 @@ function filter(arr=[]){
     return arr.reduce((t, v) => v >= 3 ? [...t, v] : t, [])
 }
 
-console.log(filter(arr));
+function map_filter(arr=[]){
+    // return arr.reduce((t, v) => (v = v * 2, v * 2 >= 10 ? (t.push(v), t) : t), [])
+    return arr.reduce((t, v) => (v = v * 2, v >= 10 ? [...t, v] : t), [])
+}
+
+
+console.log(map_filter(arr));
