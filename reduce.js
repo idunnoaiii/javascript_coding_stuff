@@ -40,4 +40,12 @@ function chunk(arr=[], size=1){
     return arr.length ? arr.reduce((t, v) => (t[t.length-1].length === size ? t.push([v]) : t[t.length-1].push(v), t), [[]]) :[]
 }
 
-console.log(chunk(arr,3));
+function defference(arr=[], oarr=[]){
+    return arr.reduce((t, v) => (!oarr.includes(v) && t.push(v), t), [])
+    // return arr.reduce((t, v)=> oarr.indexOf(v) === -1 ? [...t, v] :  t, [])
+}
+
+
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [2, 3, 6]
+console.log(defference(arr1, arr2));
