@@ -1,6 +1,3 @@
-let arr = [1,2,32,4,5,6]
-
-
 function reverseArr(arr =[]){
     //return arr.reduceRight((t, v) => (t.push(v), t), [])
     return arr.reduceRight((t, v) => [...t, v], [])
@@ -27,7 +24,7 @@ function some(arr=[]){
     return arr.reduce((t, v) => t || (t = v >= 5, t), false)
 }
 
-function any(arr=[]){
+function every(arr=[]){
     return arr.reduce((t, v) => t && v < 3, true)
 }
 
@@ -40,12 +37,37 @@ function chunk(arr=[], size=1){
     return arr.length ? arr.reduce((t, v) => (t[t.length-1].length === size ? t.push([v]) : t[t.length-1].push(v), t), [[]]) :[]
 }
 
-function defference(arr=[], oarr=[]){
+function difference(arr=[], oarr=[]){
     return arr.reduce((t, v) => (!oarr.includes(v) && t.push(v), t), [])
     // return arr.reduce((t, v)=> oarr.indexOf(v) === -1 ? [...t, v] :  t, [])
 }
 
-
 const arr1 = [1, 2, 3, 4, 5];
 const arr2 = [2, 3, 6]
-console.log(defference(arr1, arr2));
+difference(arr1, arr2); // [1, 4, 5]
+
+
+function Fill(arr=[], val="", start=0, end=arr.length){
+    if(start < 0 || end > arr.length || start > end) return arr
+    return [
+        ...arr.slice(0, start),
+        ...arr.slice(start, end).reduce((t, v) => (t.push(val || v), t), []),
+        ...arr.slice(end, arr.length)
+    ]
+}
+
+// const arr = [0, 1, 2, 3, 4, 5, 6];
+// const retArr = Fill(arr, null , 2, 5)
+// console.log(retArr); 
+
+
+function Flat(arr=[]){
+    // return arr.reduce((t, v) => Array.isArray(v) ? [...t, ...Flat(v)] : [...t, v],[]) // use rest
+    return arr.reduce((t, v) => t.concat(Array.isArray(v) ? Flat(v) : v), []) // use concat 
+}
+
+// const arr = [0, 1, [2, 3], [4, 5, [6, 7]], [8, [9, 10, [11, 12]]]];
+// const retArr = Flat(arr); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+// console.log(retArr)
+
+
