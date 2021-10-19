@@ -75,6 +75,21 @@ function Uniq(arr=[]){
     return arr.reduce((t, v) => t.indexOf(v) == -1 ? [...t, v] : t, [])
 }
 
-const arr = [2, 1, 0, 3, 2, 1, 2];
-const retArr = Uniq(arr); // [2, 1, 0, 3]
-console.log(retArr)
+// const arr = [2, 1, 0, 3, 2, 1, 2];
+// const retArr = Uniq(arr); // [2, 1, 0, 3]
+// console.log(retArr)
+
+
+function Max(arr=[]){
+    return arr.reduce((t, v) => v > t ? v : t )
+}
+
+function Min(arr=[]) {
+    return arr.reduce((t, v) => v < t ? v : t)
+}
+
+// const arr = [12, 45, 21, 65, 38, 76, 108, 43];
+// const maxRes = Max(arr); // 108
+// console.log(maxRes)
+// const minRes = Min(arr); // 12
+// console.log(minRes)
