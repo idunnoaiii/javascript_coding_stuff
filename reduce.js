@@ -71,3 +71,10 @@ function Flat(arr=[]){
 // console.log(retArr)
 
 
+function Uniq(arr=[]){
+    return arr.reduce((t, v) => t.indexOf(v) == -1 ? [...t, v] : t, [])
+}
+
+const arr = [2, 1, 0, 3, 2, 1, 2];
+const retArr = Uniq(arr); // [2, 1, 0, 3]
+console.log(retArr)
