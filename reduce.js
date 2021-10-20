@@ -104,6 +104,15 @@ function Unzip(arr=[]){
     )
 }
 
-const arr = [["a", 1, true], ["b", 2, false]];
-const ret = Unzip(arr); // [["a", "b"], [1, 2], [true, false]]
-console.log(Unzip(arr))
+// const arr = [["a", 1, true], ["b", 2, false]];
+// const ret = Unzip(arr); // [["a", "b"], [1, 2], [true, false]]
+// console.log(Unzip(arr))
+
+function Count(arr=[]){
+    //return arr.reduce((t, v) => (t[v] ? t[v] += 1 : t[v]=1, t), {})
+    return arr.reduce((t, v) => (t[v] = (t[v]||0) + 1, t), {})
+}
+
+// const arr = [0, 1, 1, 2, 2, 2];
+// const res = Count(arr); // { 0: 1, 1: 2, 2: 3 }
+// console.log(res)
