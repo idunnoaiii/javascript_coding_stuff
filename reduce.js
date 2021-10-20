@@ -93,3 +93,17 @@ function Min(arr=[]) {
 // console.log(maxRes)
 // const minRes = Min(arr); // 12
 // console.log(minRes)
+
+ 
+function Unzip(arr=[]){
+    // return arr.reduce((t, v) => (v.forEach((val, index) => (Array.isArray(t[index]) ? t[index].push(val) : t[index]=[val])), t), [[]])
+
+    return arr.reduce(
+        (t, v) => (v.forEach((v1, idx) => t[idx].push(v1)), t),
+        Array.from({length: Math.max(...arr.map(v => v.length))}).map(v => [])
+    )
+}
+
+const arr = [["a", 1, true], ["b", 2, false]];
+const ret = Unzip(arr); // [["a", "b"], [1, 2], [true, false]]
+console.log(Unzip(arr))
