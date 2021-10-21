@@ -116,3 +116,19 @@ function Count(arr=[]){
 // const arr = [0, 1, 1, 2, 2, 2];
 // const res = Count(arr); // { 0: 1, 1: 2, 2: 3 }
 // console.log(res)
+
+
+function Group(arr=[], key){
+    //return key ? arr.reduce((t, v) => (t[v[key]] ? t[v[key]].push(v) : t[v[key]]=[v], t),{}) : {}
+    return key ? arr.reduce((t, v) => (!t[v[key]] && (t[v[key]]=[]), t[v[key]].push(v), t), {}) : {}
+}
+
+const arr = [
+    { area: "GZ", name: "YZW", age: 27 },
+    { area: "GZ", name: "TYJ", age: 25 },
+    { area: "SZ", name: "AAA", age: 23 },
+    { area: "FS", name: "BBB", age: 21 },
+    { area: "SZ", name: "CCC", age: 19 }
+]; 
+const res = Group(arr, "area"); // { GZ: Array(2), SZ: Array(2), FS: Array(1) }
+console.log(res)
