@@ -123,12 +123,33 @@ function Group(arr=[], key){
     return key ? arr.reduce((t, v) => (!t[v[key]] && (t[v[key]]=[]), t[v[key]].push(v), t), {}) : {}
 }
 
-const arr = [
-    { area: "GZ", name: "YZW", age: 27 },
-    { area: "GZ", name: "TYJ", age: 25 },
-    { area: "SZ", name: "AAA", age: 23 },
-    { area: "FS", name: "BBB", age: 21 },
-    { area: "SZ", name: "CCC", age: 19 }
-]; 
-const res = Group(arr, "area"); // { GZ: Array(2), SZ: Array(2), FS: Array(1) }
-console.log(res)
+// const arr = [
+//     { area: "GZ", name: "YZW", age: 27 },
+//     { area: "GZ", name: "TYJ", age: 25 },
+//     { area: "SZ", name: "AAA", age: 23 },
+//     { area: "FS", name: "BBB", age: 21 },
+//     { area: "SZ", name: "CCC", age: 19 }
+// ]; 
+// const res = Group(arr, "area"); // { GZ: Array(2), SZ: Array(2), FS: Array(1) }
+// console.log(res)
+
+
+
+function Keyword(arr=[], keys){
+    // const joinArr = arr.join(' ')
+    // return keys.reduce((t, v) => (joinArr.indexOf(v) > 0 && t.push(v), t), []);
+    return keys.reduce((t, v) => (arr.some(w => w.includes(v) && t.push(v)), t), [])
+}
+
+// const text = [
+//     "blog javascript by anonystick.com",
+//     "anonystick.com",
+//     "tiki and lazada is better",
+// ];
+// const keyword = ["javascript", "anonystick", 'words' ,"lazada", 'tips javascript']
+// console.log(Keyword(text, keyword)); //["javascript","anonystick","lazada"]
+
+
+
+
+
