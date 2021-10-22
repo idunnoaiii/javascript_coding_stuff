@@ -158,7 +158,13 @@ function ThousandNum(num=0){
     return str.length > 1 ? `${int(str[0])}.${dec(str[1])}` : int(str[0])
 }
 
-console.log(ThousandNum(1234)); // "1,234"
-console.log(ThousandNum(1234.00)); // "1,234"
-console.log(ThousandNum(0.1234)); // "0.123,4"
-console.log(ThousandNum(1234.5678)); // "1,234.567,8"
+// console.log(ThousandNum(1234)); // "1,234"
+// console.log(ThousandNum(1234.00)); // "1,234"
+// console.log(ThousandNum(0.1234)); // "0.123,4"
+// console.log(ThousandNum(1234.5678)); // "1,234.567,8"
+
+function StringifyUrlSearch(search = {}){
+    return Object.entries(search).reduce((t,v) => `${t}${v[0]}=${encodeURIComponent(v[1])}&`, Object.entries.length ? '?' : '').replace(/&$/, '')
+}
+
+console.log(StringifyUrlSearch({ age: 55, name: "anonystick" }))
